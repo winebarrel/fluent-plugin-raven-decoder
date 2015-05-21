@@ -9,3 +9,20 @@ RSpec.configure do |config|
     Fluent::Test.setup
   end
 end
+
+def run_driver(options = {})
+  prefix = options[:prefix] || 'decoded'
+  tag = options[:tag] || 'raven.error'
+
+  fluentd_conf = <<-EOS
+type raven_decoder
+prefix #{prefix}
+  EOS
+
+  tag = options[:tag] || 'raven.error'
+  driver = Fluent::Test::OutputTestDriver.new(Fluent::RavenDecoderOutput, tag).configure(fluentd_conf)
+
+  driver.run do
+    yield(driver)
+  end
+end
