@@ -1,6 +1,8 @@
 # Fluent::Plugin::Raven::Decoder
 
-TODO: Write a gem description
+Fluentd plugin to decode Raven data.
+
+[Raven](https://github.com/getsentry/raven-ruby) is a client for [Sentry](https://getsentry.com/welcome/).
 
 ## Installation
 
@@ -18,14 +20,23 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-raven-decoder
 
+## Configuration
+
+```
+<match raven.error>
+  type raven_decoder
+  prefix decoded
+  #data_field data
+  #ignore_fields ["modules", "exception"]
+</match>
+```
+
 ## Usage
 
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/fluent-plugin-raven-decoder/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+```sh
+# Raven data
+# see https://github.com/cookpad/raven-transports-fluentd
+DATA='{"auth_header":"Sentry sentry_version=5, ..." "data":"eJz...="}'
+echo $DATA | fluent-cat raven.error
+# decoded to: {"event_id":"747...","message":"ZeroDivisionError: divided by 0",...
+```

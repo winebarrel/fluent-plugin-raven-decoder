@@ -4,8 +4,8 @@ Gem::Specification.new do |spec|
   spec.version       = '0.1.0'
   spec.authors       = ['Genki Sugawara']
   spec.email         = ['sgwr_dts@yahoo.co.jp']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Fluentd plugin to decode Raven data.}
+  spec.description   = %q{Fluentd plugin to decode Raven data.}
   spec.homepage      = 'https://github.com/winebarrel/fluent-plugin-raven-decoder'
   spec.license       = 'MIT'
 
@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'fluentd'
+  spec.add_dependency 'multi_json'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
 end
