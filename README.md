@@ -4,6 +4,9 @@ Fluentd plugin to decode Raven data.
 
 [Raven](https://github.com/getsentry/raven-ruby) is a client for [Sentry](https://getsentry.com/welcome/).
 
+[![Gem Version](https://badge.fury.io/rb/fluent-plugin-raven-decoder.svg)](http://badge.fury.io/rb/fluent-plugin-raven-decoder)
+[![Build Status](https://travis-ci.org/winebarrel/fluent-plugin-raven-decoder.svg?branch=master)](https://travis-ci.org/winebarrel/fluent-plugin-raven-decoder)
+
 ## Installation
 
 Add this line to your application's Gemfile:
