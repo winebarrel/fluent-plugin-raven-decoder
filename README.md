@@ -1,4 +1,4 @@
-# Fluent::Plugin::Raven::Decoder
+# fluent-plugin-raven-decoder
 
 Fluentd plugin to decode Raven data.
 
