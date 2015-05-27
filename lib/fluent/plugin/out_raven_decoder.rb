@@ -33,15 +33,16 @@ class Fluent::RavenDecoderOutput < Fluent::Output
   end
 
   def emit(tag, es, chain)
+    new_tag = @prefix + '.' + tag
+
     es.each do |time, record|
       data = record[@data_field]
 
       if data
         data = decode(data)
-        tag = @prefix + '.' + tag
-        router.emit(tag, time, data)
+        router.emit(new_tag, time, data)
       else
-        log.warn("Eaven data is not included: tag:#{tag} record:#{record.inspect}")
+        log.warn("Raven data is not included: tag:#{new_tag} record:#{record.inspect}")
       end
     end
 
